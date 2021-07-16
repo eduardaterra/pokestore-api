@@ -11,7 +11,7 @@ pokemonRouter.get("/", async (req, res) => {
     ? 20
     : Number(req.query.limit);
   const findParams: any = null;
-  const url: string = "http://localhost:3000/pokemon/";
+  const url: string = "https://pokestore-api.herokuapp.com/pokemon/";
   const order: any = req.query.order;
 
   res.send(await pagination(offset, limit, findParams, url, order));
@@ -28,7 +28,7 @@ pokemonRouter.get("/:name", async (req, res) => {
   const findParams = {
     name: { $regex: new RegExp(req.params.name), $options: "i" },
   };
-  const url: string = `http://localhost:3000/pokemon/${req.params.name}`;
+  const url: string = `https://pokestore-api.herokuapp.com/${req.params.name}`;
   const order: any = req.query.order;
 
   res.send(await pagination(offset, limit, findParams, url, order));

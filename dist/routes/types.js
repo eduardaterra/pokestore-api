@@ -46,26 +46,26 @@ typesRouter.get("/", function (req, res) { return __awaiter(void 0, void 0, void
     var typeRoutes, countRoutes;
     return __generator(this, function (_a) {
         typeRoutes = {
-            normal: "http://localhost:3000/types/normal",
-            fighting: "http://localhost:3000/types/fighting",
-            flying: "http://localhost:3000/types/flying",
-            poison: "http://localhost:3000/types/poison",
-            ground: "http://localhost:3000/types/ground",
-            rock: "http://localhost:3000/types/rock",
-            bug: "http://localhost:3000/types/bug",
-            ghost: "http://localhost:3000/types/ghost",
-            steel: "http://localhost:3000/types/steel",
-            fire: "http://localhost:3000/types/fire",
-            water: "http://localhost:3000/types/water",
-            grass: "http://localhost:3000/types/grass",
-            electric: "http://localhost:3000/types/electric",
-            psychic: "http://localhost:3000/types/psychic",
-            ice: "http://localhost:3000/types/ice",
-            dragon: "http://localhost:3000/types/dragon",
-            dark: "http://localhost:3000/types/dark",
-            fairy: "http://localhost:3000/types/fairy",
-            unknown: "http://localhost:3000/types/unknown",
-            shadow: "http://localhost:3000/types/shadow",
+            normal: "https://pokestore-api.herokuapp.com/types/normal",
+            fighting: "https://pokestore-api.herokuapp.com/types/fighting",
+            flying: "https://pokestore-api.herokuapp.com/types/flying",
+            poison: "https://pokestore-api.herokuapp.com/types/poison",
+            ground: "https://pokestore-api.herokuapp.com/types/ground",
+            rock: "https://pokestore-api.herokuapp.com/types/rock",
+            bug: "https://pokestore-api.herokuapp.com/types/bug",
+            ghost: "https://pokestore-api.herokuapp.com/types/ghost",
+            steel: "https://pokestore-api.herokuapp.com/types/steel",
+            fire: "https://pokestore-api.herokuapp.com/types/fire",
+            water: "https://pokestore-api.herokuapp.com/types/water",
+            grass: "https://pokestore-api.herokuapp.com/types/grass",
+            electric: "https://pokestore-api.herokuapp.com/types/electric",
+            psychic: "https://pokestore-api.herokuapp.com/types/psychic",
+            ice: "https://pokestore-api.herokuapp.com/types/ice",
+            dragon: "https://pokestore-api.herokuapp.com/types/dragon",
+            dark: "https://pokestore-api.herokuapp.com/types/dark",
+            fairy: "https://pokestore-api.herokuapp.com/types/fairy",
+            unknown: "https://pokestore-api.herokuapp.com/types/unknown",
+            shadow: "https://pokestore-api.herokuapp.com/types/shadow",
         };
         countRoutes = Object.keys(typeRoutes).length;
         res.send({ count: countRoutes, routes: typeRoutes });
@@ -85,7 +85,7 @@ typesRouter.get("/:type", function (req, res) { return __awaiter(void 0, void 0,
                     : Number(req.query.limit);
                 currentType = req.params.type;
                 findParams = { types: { $in: [currentType] } };
-                url = "http://localhost:3000/types/" + currentType;
+                url = "https://pokestore-api.herokuapp.com/types/" + currentType;
                 order = req.query.order;
                 _b = (_a = res).send;
                 return [4 /*yield*/, pagination_1.default(offset, limit, findParams, url, order)];

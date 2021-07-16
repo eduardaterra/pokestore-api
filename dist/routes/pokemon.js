@@ -54,7 +54,7 @@ pokemonRouter.get("/", function (req, res) { return __awaiter(void 0, void 0, vo
                     ? 20
                     : Number(req.query.limit);
                 findParams = null;
-                url = "http://localhost:3000/pokemon/";
+                url = "https://pokestore-api.herokuapp.com/pokemon/";
                 order = req.query.order;
                 _b = (_a = res).send;
                 return [4 /*yield*/, pagination_1.default(offset, limit, findParams, url, order)];
@@ -78,7 +78,7 @@ pokemonRouter.get("/:name", function (req, res) { return __awaiter(void 0, void 
                 findParams = {
                     name: { $regex: new RegExp(req.params.name), $options: "i" },
                 };
-                url = "http://localhost:3000/pokemon/" + req.params.name;
+                url = "https://pokestore-api.herokuapp.com/" + req.params.name;
                 order = req.query.order;
                 _b = (_a = res).send;
                 return [4 /*yield*/, pagination_1.default(offset, limit, findParams, url, order)];

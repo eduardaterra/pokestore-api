@@ -44,9 +44,11 @@ var mongoose_1 = __importDefault(require("mongoose"));
 var dotenv_1 = __importDefault(require("dotenv"));
 var pokemon_1 = __importDefault(require("./routes/pokemon"));
 var types_1 = __importDefault(require("./routes/types"));
+var cors_1 = __importDefault(require("cors"));
 dotenv_1.default.config();
 var app = express_1.default();
 app.use(express_1.default.json());
+app.use(cors_1.default());
 console.log(process.env.DATABASE_CONNECTION);
 mongoose_1.default.connect(process.env.DATABASE_CONNECTION, { useNewUrlParser: true }, function (err) {
     if (err) {
@@ -59,8 +61,8 @@ mongoose_1.default.connect(process.env.DATABASE_CONNECTION, { useNewUrlParser: t
 app.get("/", function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
     return __generator(this, function (_a) {
         res.send({
-            pokemon: "http://localhost:3000/pokemon",
-            types: "http://localhost:3000/types",
+            pokemon: "https://pokestore-api.herokuapp.com/pokemon",
+            types: "https://pokestore-api.herokuapp.com/types",
         });
         return [2 /*return*/];
     });
