@@ -1,30 +1,33 @@
 import express from "express";
 import pagination from "../services/pagination";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 const typesRouter = express.Router();
 
 typesRouter.get("/", async (req, res) => {
   const typeRoutes = {
-    normal: "https://pokestore-api.herokuapp.com/types/normal",
-    fighting: "https://pokestore-api.herokuapp.com/types/fighting",
-    flying: "https://pokestore-api.herokuapp.com/types/flying",
-    poison: "https://pokestore-api.herokuapp.com/types/poison",
-    ground: "https://pokestore-api.herokuapp.com/types/ground",
-    rock: "https://pokestore-api.herokuapp.com/types/rock",
-    bug: "https://pokestore-api.herokuapp.com/types/bug",
-    ghost: "https://pokestore-api.herokuapp.com/types/ghost",
-    steel: "https://pokestore-api.herokuapp.com/types/steel",
-    fire: "https://pokestore-api.herokuapp.com/types/fire",
-    water: "https://pokestore-api.herokuapp.com/types/water",
-    grass: "https://pokestore-api.herokuapp.com/types/grass",
-    electric: "https://pokestore-api.herokuapp.com/types/electric",
-    psychic: "https://pokestore-api.herokuapp.com/types/psychic",
-    ice: "https://pokestore-api.herokuapp.com/types/ice",
-    dragon: "https://pokestore-api.herokuapp.com/types/dragon",
-    dark: "https://pokestore-api.herokuapp.com/types/dark",
-    fairy: "https://pokestore-api.herokuapp.com/types/fairy",
-    unknown: "https://pokestore-api.herokuapp.com/types/unknown",
-    shadow: "https://pokestore-api.herokuapp.com/types/shadow",
+    normal: `${process.env.APP_URL}com/types/normal`,
+    fighting: `${process.env.APP_URL}com/types/fighting`,
+    flying: `${process.env.APP_URL}com/types/flying`,
+    poison: `${process.env.APP_URL}com/types/poison`,
+    ground: `${process.env.APP_URL}com/types/ground`,
+    rock: `${process.env.APP_URL}com/types/rock`,
+    bug: `${process.env.APP_URL}com/types/bug`,
+    ghost: `${process.env.APP_URL}com/types/ghost`,
+    steel: `${process.env.APP_URL}com/types/steel`,
+    fire: `${process.env.APP_URL}com/types/fire`,
+    water: `${process.env.APP_URL}com/types/water`,
+    grass: `${process.env.APP_URL}com/types/grass`,
+    electric: `${process.env.APP_URL}com/types/electric`,
+    psychic: `${process.env.APP_URL}com/types/psychic`,
+    ice: `${process.env.APP_URL}com/types/ice`,
+    dragon: `${process.env.APP_URL}com/types/dragon`,
+    dark: `${process.env.APP_URL}com/types/dark`,
+    fairy: `${process.env.APP_URL}com/types/fairy`,
+    unknown: `${process.env.APP_URL}com/types/unknown`,
+    shadow: `${process.env.APP_URL}com/types/shadow`,
   };
 
   const countRoutes = Object.keys(typeRoutes).length;

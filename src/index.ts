@@ -24,8 +24,8 @@ mongoose.connect(
 
 app.get("/", async (req, res) => {
   res.send({
-    pokemon: "https://pokestore-api.herokuapp.com/pokemon",
-    types: "https://pokestore-api.herokuapp.com/types",
+    pokemon: `${process.env.APP_URL}/pokemon`,
+    types: `${process.env.APP_URL}/types`,
   });
 });
 
