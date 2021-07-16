@@ -58,8 +58,8 @@ mongoose_1.default.connect(process.env.DATABASE_CONNECTION, { useNewUrlParser: t
 app.get("/", function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
     return __generator(this, function (_a) {
         res.send({
-            pokemon: process.env.APP_URL + "/pokemon",
-            types: process.env.APP_URL + "/types",
+            pokemon: process.env.APP_URL + "pokemon",
+            types: process.env.APP_URL + "types",
         });
         return [2 /*return*/];
     });

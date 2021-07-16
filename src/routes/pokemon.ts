@@ -14,7 +14,7 @@ pokemonRouter.get("/", async (req, res) => {
     ? 20
     : Number(req.query.limit);
   const findParams: any = null;
-  const url: string = `${process.env.APP_URL}pokemon/`;
+  const url: string = `${process.env.APP_URL}pokemon`;
   const order: any = req.query.order;
 
   res.send(await pagination(offset, limit, findParams, url, order));

@@ -48,26 +48,26 @@ typesRouter.get("/", function (req, res) { return __awaiter(void 0, void 0, void
     var typeRoutes, countRoutes;
     return __generator(this, function (_a) {
         typeRoutes = {
-            normal: process.env.APP_URL + "com/types/normal",
-            fighting: process.env.APP_URL + "com/types/fighting",
-            flying: process.env.APP_URL + "com/types/flying",
-            poison: process.env.APP_URL + "com/types/poison",
-            ground: process.env.APP_URL + "com/types/ground",
-            rock: process.env.APP_URL + "com/types/rock",
-            bug: process.env.APP_URL + "com/types/bug",
-            ghost: process.env.APP_URL + "com/types/ghost",
-            steel: process.env.APP_URL + "com/types/steel",
-            fire: process.env.APP_URL + "com/types/fire",
-            water: process.env.APP_URL + "com/types/water",
-            grass: process.env.APP_URL + "com/types/grass",
-            electric: process.env.APP_URL + "com/types/electric",
-            psychic: process.env.APP_URL + "com/types/psychic",
-            ice: process.env.APP_URL + "com/types/ice",
-            dragon: process.env.APP_URL + "com/types/dragon",
-            dark: process.env.APP_URL + "com/types/dark",
-            fairy: process.env.APP_URL + "com/types/fairy",
-            unknown: process.env.APP_URL + "com/types/unknown",
-            shadow: process.env.APP_URL + "com/types/shadow",
+            normal: process.env.APP_URL + "types/normal",
+            fighting: process.env.APP_URL + "types/fighting",
+            flying: process.env.APP_URL + "types/flying",
+            poison: process.env.APP_URL + "types/poison",
+            ground: process.env.APP_URL + "types/ground",
+            rock: process.env.APP_URL + "types/rock",
+            bug: process.env.APP_URL + "types/bug",
+            ghost: process.env.APP_URL + "types/ghost",
+            steel: process.env.APP_URL + "types/steel",
+            fire: process.env.APP_URL + "types/fire",
+            water: process.env.APP_URL + "types/water",
+            grass: process.env.APP_URL + "types/grass",
+            electric: process.env.APP_URL + "types/electric",
+            psychic: process.env.APP_URL + "types/psychic",
+            ice: process.env.APP_URL + "types/ice",
+            dragon: process.env.APP_URL + "types/dragon",
+            dark: process.env.APP_URL + "types/dark",
+            fairy: process.env.APP_URL + "types/fairy",
+            unknown: process.env.APP_URL + "types/unknown",
+            shadow: process.env.APP_URL + "types/shadow",
         };
         countRoutes = Object.keys(typeRoutes).length;
         res.send({ count: countRoutes, routes: typeRoutes });
@@ -87,7 +87,7 @@ typesRouter.get("/:type", function (req, res) { return __awaiter(void 0, void 0,
                     : Number(req.query.limit);
                 currentType = req.params.type;
                 findParams = { types: { $in: [currentType] } };
-                url = "https://pokestore-api.herokuapp.com/types/" + currentType;
+                url = process.env.APP_URL + "types/" + currentType;
                 order = req.query.order;
                 _b = (_a = res).send;
                 return [4 /*yield*/, pagination_1.default(offset, limit, findParams, url, order)];
