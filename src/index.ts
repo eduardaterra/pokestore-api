@@ -24,8 +24,8 @@ mongoose.connect(
 
 app.get("/", async (req, res) => {
   res.send({
-    pokemon: `${process.env.APP_URL}/pokemon`,
-    types: `${process.env.APP_URL}/types`,
+    pokemon: `${process.env.APP_URL}pokemon`,
+    types: `${process.env.APP_URL}types`,
   });
 });
 

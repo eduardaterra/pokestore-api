@@ -8,26 +8,26 @@ const typesRouter = express.Router();
 
 typesRouter.get("/", async (req, res) => {
   const typeRoutes = {
-    normal: `${process.env.APP_URL}com/types/normal`,
-    fighting: `${process.env.APP_URL}com/types/fighting`,
-    flying: `${process.env.APP_URL}com/types/flying`,
-    poison: `${process.env.APP_URL}com/types/poison`,
-    ground: `${process.env.APP_URL}com/types/ground`,
-    rock: `${process.env.APP_URL}com/types/rock`,
-    bug: `${process.env.APP_URL}com/types/bug`,
-    ghost: `${process.env.APP_URL}com/types/ghost`,
-    steel: `${process.env.APP_URL}com/types/steel`,
-    fire: `${process.env.APP_URL}com/types/fire`,
-    water: `${process.env.APP_URL}com/types/water`,
-    grass: `${process.env.APP_URL}com/types/grass`,
-    electric: `${process.env.APP_URL}com/types/electric`,
-    psychic: `${process.env.APP_URL}com/types/psychic`,
-    ice: `${process.env.APP_URL}com/types/ice`,
-    dragon: `${process.env.APP_URL}com/types/dragon`,
-    dark: `${process.env.APP_URL}com/types/dark`,
-    fairy: `${process.env.APP_URL}com/types/fairy`,
-    unknown: `${process.env.APP_URL}com/types/unknown`,
-    shadow: `${process.env.APP_URL}com/types/shadow`,
+    normal: `${process.env.APP_URL}types/normal`,
+    fighting: `${process.env.APP_URL}types/fighting`,
+    flying: `${process.env.APP_URL}types/flying`,
+    poison: `${process.env.APP_URL}types/poison`,
+    ground: `${process.env.APP_URL}types/ground`,
+    rock: `${process.env.APP_URL}types/rock`,
+    bug: `${process.env.APP_URL}types/bug`,
+    ghost: `${process.env.APP_URL}types/ghost`,
+    steel: `${process.env.APP_URL}types/steel`,
+    fire: `${process.env.APP_URL}types/fire`,
+    water: `${process.env.APP_URL}types/water`,
+    grass: `${process.env.APP_URL}types/grass`,
+    electric: `${process.env.APP_URL}types/electric`,
+    psychic: `${process.env.APP_URL}types/psychic`,
+    ice: `${process.env.APP_URL}types/ice`,
+    dragon: `${process.env.APP_URL}types/dragon`,
+    dark: `${process.env.APP_URL}types/dark`,
+    fairy: `${process.env.APP_URL}types/fairy`,
+    unknown: `${process.env.APP_URL}types/unknown`,
+    shadow: `${process.env.APP_URL}types/shadow`,
   };
 
   const countRoutes = Object.keys(typeRoutes).length;
@@ -47,7 +47,7 @@ typesRouter.get("/:type", async (req, res) => {
 
   const findParams: any = { types: { $in: [currentType] } };
 
-  const url: string = `https://pokestore-api.herokuapp.com/types/${currentType}`;
+  const url: string = `${process.env.APP_URL}types/${currentType}`;
 
   const order: any = req.query.order;
 
