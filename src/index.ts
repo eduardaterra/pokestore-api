@@ -18,8 +18,6 @@ mongoose.connect(
   (err) => {
     if (err) {
       console.log(err);
-    } else {
-      console.log("connected to db");
     }
   }
 );
@@ -35,4 +33,4 @@ app.use("/pokemon", pokemonRouter);
 
 app.use("/types", typesRouter);
 
-app.listen(3000, () => console.log("Server started at port 3000"));
+app.listen(process.env.PORT || 3000);
