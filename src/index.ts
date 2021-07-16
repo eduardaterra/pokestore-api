@@ -3,11 +3,12 @@ import mongoose from "mongoose";
 import dotenv from "dotenv";
 import pokemonRouter from "./routes/pokemon";
 import typesRouter from "./routes/types";
-import Pokemon from "./models/Pokemon";
+import cors from "cors";
 
 dotenv.config();
 const app = express();
 app.use(express.json());
+app.use(cors());
 
 console.log(process.env.DATABASE_CONNECTION);
 
