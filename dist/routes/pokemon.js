@@ -41,6 +41,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var express_1 = __importDefault(require("express"));
 var pagination_1 = __importDefault(require("../services/pagination"));
+var dotenv_1 = __importDefault(require("dotenv"));
+dotenv_1.default.config();
 var pokemonRouter = express_1.default.Router();
 pokemonRouter.get("/", function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
     var offset, limit, findParams, url, order, _a, _b;
@@ -54,7 +56,7 @@ pokemonRouter.get("/", function (req, res) { return __awaiter(void 0, void 0, vo
                     ? 20
                     : Number(req.query.limit);
                 findParams = null;
-                url = "https://pokestore-api.herokuapp.com/pokemon/";
+                url = process.env.APP_URL + "/pokemon/";
                 order = req.query.order;
                 _b = (_a = res).send;
                 return [4 /*yield*/, pagination_1.default(offset, limit, findParams, url, order)];
@@ -78,7 +80,7 @@ pokemonRouter.get("/:name", function (req, res) { return __awaiter(void 0, void 
                 findParams = {
                     name: { $regex: new RegExp(req.params.name), $options: "i" },
                 };
-                url = "https://pokestore-api.herokuapp.com/" + req.params.name;
+                url = process.env.APP_URL + "/" + req.params.name;
                 order = req.query.order;
                 _b = (_a = res).send;
                 return [4 /*yield*/, pagination_1.default(offset, limit, findParams, url, order)];

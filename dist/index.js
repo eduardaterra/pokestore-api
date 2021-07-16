@@ -54,19 +54,16 @@ mongoose_1.default.connect(process.env.DATABASE_CONNECTION, { useNewUrlParser: t
     if (err) {
         console.log(err);
     }
-    else {
-        console.log("connected to db");
-    }
 });
 app.get("/", function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
     return __generator(this, function (_a) {
         res.send({
-            pokemon: "https://pokestore-api.herokuapp.com/pokemon",
-            types: "https://pokestore-api.herokuapp.com/types",
+            pokemon: process.env.APP_URL + "/pokemon",
+            types: process.env.APP_URL + "/types",
         });
         return [2 /*return*/];
     });
 }); });
 app.use("/pokemon", pokemon_1.default);
 app.use("/types", types_1.default);
-app.listen(3000, function () { return console.log("Server started at port 3000"); });
+app.listen(process.env.PORT || 3000);
