@@ -41,7 +41,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var Pokemon_1 = __importDefault(require("../models/Pokemon"));
 var pagination = function (offset, limit, findParams, url, order) { return __awaiter(void 0, void 0, void 0, function () {
-    var orderApi, result, countAllPokemon, nextPage, previousPage, pageInfo;
+    var orderApi, result, countAllPokemon, nextPage, previousPage;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
@@ -61,22 +61,21 @@ var pagination = function (offset, limit, findParams, url, order) { return __awa
                 previousPage = offset === 0 || offset - limit < 0
                     ? null
                     : url + "?offset=" + (offset - limit) + "&limit=" + limit + "&order=" + orderApi;
-                pageInfo = orderApi === "key"
-                    ? {
-                        count: countAllPokemon,
-                        previous: previousPage,
-                        next: nextPage,
-                        orderByName: url + "?offset=" + offset + "&limit=" + limit + "&order=name",
-                        results: result,
-                    }
-                    : {
-                        count: countAllPokemon,
-                        previous: previousPage,
-                        next: nextPage,
-                        orderByKey: url + "?offset=" + offset + "&limit=" + limit + "&order=key",
-                        results: result,
-                    };
-                return [2 /*return*/, pageInfo];
+                return [2 /*return*/, orderApi === "key"
+                        ? {
+                            count: countAllPokemon,
+                            previous: previousPage,
+                            next: nextPage,
+                            orderByName: url + "?offset=" + offset + "&limit=" + limit + "&order=name",
+                            results: result,
+                        }
+                        : {
+                            count: countAllPokemon,
+                            previous: previousPage,
+                            next: nextPage,
+                            orderByKey: url + "?offset=" + offset + "&limit=" + limit + "&order=key",
+                            results: result,
+                        }];
         }
     });
 }); };

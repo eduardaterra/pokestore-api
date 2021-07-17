@@ -66,7 +66,7 @@ pokemonRouter.get("/", function (req, res) { return __awaiter(void 0, void 0, vo
         }
     });
 }); });
-pokemonRouter.get("/:name", function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+pokemonRouter.get("/:nameOrKey", function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
     var offset, limit, findParams, url, order, _a, _b;
     return __generator(this, function (_c) {
         switch (_c.label) {
@@ -77,10 +77,12 @@ pokemonRouter.get("/:name", function (req, res) { return __awaiter(void 0, void 
                 limit = isNaN(Number(req.query.limit))
                     ? 20
                     : Number(req.query.limit);
-                findParams = {
-                    name: { $regex: new RegExp(req.params.name), $options: "i" },
-                };
-                url = "" + process.env.APP_URL + req.params.name;
+                findParams = isNaN(Number(req.params.nameOrKey))
+                    ? {
+                        name: { $regex: new RegExp(req.params.nameOrKey), $options: "i" },
+                    }
+                    : { key: req.params.nameOrKey };
+                url = "" + process.env.APP_URL + req.params.nameOrKey;
                 order = req.query.order;
                 _b = (_a = res).send;
                 return [4 /*yield*/, pagination_1.default(offset, limit, findParams, url, order)];

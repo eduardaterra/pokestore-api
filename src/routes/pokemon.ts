@@ -20,7 +20,7 @@ pokemonRouter.get("/", async (req, res) => {
   res.send(await pagination(offset, limit, findParams, url, order));
 });
 
-pokemonRouter.get("/:name", async (req, res) => {
+pokemonRouter.get("/:nameOrKey", async (req, res) => {
   const offset: number = isNaN(Number(req.query.offset))
     ? 0
     : Number(req.query.offset);
@@ -28,10 +28,12 @@ pokemonRouter.get("/:name", async (req, res) => {
     ? 20
     : Number(req.query.limit);
 
-  const findParams = {
-    name: { $regex: new RegExp(req.params.name), $options: "i" },
-  };
-  const url: string = `${process.env.APP_URL}${req.params.name}`;
+  const findParams = isNaN(Number(req.params.nameOrKey))
+    ? {
+        name: { $regex: new RegExp(req.params.nameOrKey), $options: "i" },
+      }
+    : { key: req.params.nameOrKey };
+  const url: string = `${process.env.APP_URL}${req.params.nameOrKey}`;
   const order: any = req.query.order;
 
   res.send(await pagination(offset, limit, findParams, url, order));

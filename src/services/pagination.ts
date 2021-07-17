@@ -26,24 +26,21 @@ const pagination = async (
       ? null
       : `${url}?offset=${offset - limit}&limit=${limit}&order=${orderApi}`;
 
-  const pageInfo =
-    orderApi === "key"
-      ? {
-          count: countAllPokemon,
-          previous: previousPage,
-          next: nextPage,
-          orderByName: `${url}?offset=${offset}&limit=${limit}&order=name`,
-          results: result,
-        }
-      : {
-          count: countAllPokemon,
-          previous: previousPage,
-          next: nextPage,
-          orderByKey: `${url}?offset=${offset}&limit=${limit}&order=key`,
-          results: result,
-        };
-
-  return pageInfo;
+  return orderApi === "key"
+    ? {
+        count: countAllPokemon,
+        previous: previousPage,
+        next: nextPage,
+        orderByName: `${url}?offset=${offset}&limit=${limit}&order=name`,
+        results: result,
+      }
+    : {
+        count: countAllPokemon,
+        previous: previousPage,
+        next: nextPage,
+        orderByKey: `${url}?offset=${offset}&limit=${limit}&order=key`,
+        results: result,
+      };
 };
 
 export default pagination;
