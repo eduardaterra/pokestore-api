@@ -54,4 +54,38 @@ typesRouter.get("/:type", async (req, res) => {
   res.send(await pagination(offset, limit, findParams, url, order));
 });
 
+typesRouter.get("/:type/pokemon/:nameOrKey", async (req, res) => {
+  const offset: number = isNaN(Number(req.query.offset))
+    ? 0
+    : Number(req.query.offset);
+  const limit: number = isNaN(Number(req.query.limit))
+    ? 20
+    : Number(req.query.limit);
+
+  const currentType = req.params.type;
+
+  const currentNameOrKey =
+    req.params.nameOrKey === undefined ? null : req.params.nameOrKey;
+
+  const findSecondParams: any =
+    currentNameOrKey !== null
+      ? isNaN(Number(currentNameOrKey))
+        ? {
+            name: { $regex: new RegExp(currentNameOrKey), $options: "i" },
+          }
+        : { key: currentNameOrKey }
+      : null;
+
+  const findParams: any = {
+    types: { $in: [currentType] },
+    ...findSecondParams,
+  };
+
+  const url: string = `${process.env.APP_URL}types/${currentType}/pokemon/${currentNameOrKey}`;
+
+  const order: any = req.query.order;
+
+  res.send(await pagination(offset, limit, findParams, url, order));
+});
+
 export default typesRouter;
