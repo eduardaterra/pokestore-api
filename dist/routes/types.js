@@ -77,8 +77,6 @@ typesRouter.get("/", function (req, res) { return __awaiter(void 0, void 0, void
             dragon: process.env.APP_URL + "types/dragon",
             dark: process.env.APP_URL + "types/dark",
             fairy: process.env.APP_URL + "types/fairy",
-            unknown: process.env.APP_URL + "types/unknown",
-            shadow: process.env.APP_URL + "types/shadow",
         };
         countRoutes = Object.keys(typeRoutes).length;
         res.send({ count: countRoutes, routes: typeRoutes });

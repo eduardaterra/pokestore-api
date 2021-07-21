@@ -26,8 +26,6 @@ typesRouter.get("/", async (req, res) => {
     dragon: `${process.env.APP_URL}types/dragon`,
     dark: `${process.env.APP_URL}types/dark`,
     fairy: `${process.env.APP_URL}types/fairy`,
-    unknown: `${process.env.APP_URL}types/unknown`,
-    shadow: `${process.env.APP_URL}types/shadow`,
   };
 
   const countRoutes = Object.keys(typeRoutes).length;
