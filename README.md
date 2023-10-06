@@ -1,5 +1,4 @@
 <h1 align=center><img src="./.github/pokestore-api-logo.png" width="350"></img></h1>
-<h1 align=center><img src="./.github/pokestore-api.gif"></img></h1>
  <p align=center>This project is a Pokemon Store Api. Got data from <a href="https://pokeapi.co/">PokeApi</a>, customized with a price property and created new Query Params.<br/>
 <strong>Create your own Pokestore and enjoy. Gotta catch’em all! :)</strong></p><br>
 
@@ -40,5 +39,6 @@ https://pokestore-api.herokuapp.com/type/<strong>grass</strong>/pokemon/<strong>
 https://pokestore-api.herokuapp.com/pokemon?offset=20&limit=20&<strong>order</strong>=name || key || any</p><br>
 
 <p>You can set the wanted order to display the Pokemon using any Pokemon Parameters and they will show the Pokemon in a ascending order. However, the next, previous and orderBy(Name || Key), only works with the key or name properties. To use another property besides those, you will need to set this directly on Fetch. This query params also work in the <strong>Type Route</strong>.</p>
+
 
 </ol>
