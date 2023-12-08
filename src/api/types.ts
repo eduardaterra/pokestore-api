@@ -1,6 +1,7 @@
 import express from "express";
 import pagination from "../services/pagination";
 import dotenv from "dotenv";
+import { pokestoreApiUrl } from "../constants";
 
 dotenv.config();
 
@@ -8,24 +9,24 @@ const typesRouter = express.Router();
 
 typesRouter.get("/", async (req, res) => {
   const typeRoutes = {
-    normal: `${process.env.APP_URL}types/normal`,
-    fighting: `${process.env.APP_URL}types/fighting`,
-    flying: `${process.env.APP_URL}types/flying`,
-    poison: `${process.env.APP_URL}types/poison`,
-    ground: `${process.env.APP_URL}types/ground`,
-    rock: `${process.env.APP_URL}types/rock`,
-    bug: `${process.env.APP_URL}types/bug`,
-    ghost: `${process.env.APP_URL}types/ghost`,
-    steel: `${process.env.APP_URL}types/steel`,
-    fire: `${process.env.APP_URL}types/fire`,
-    water: `${process.env.APP_URL}types/water`,
-    grass: `${process.env.APP_URL}types/grass`,
-    electric: `${process.env.APP_URL}types/electric`,
-    psychic: `${process.env.APP_URL}types/psychic`,
-    ice: `${process.env.APP_URL}types/ice`,
-    dragon: `${process.env.APP_URL}types/dragon`,
-    dark: `${process.env.APP_URL}types/dark`,
-    fairy: `${process.env.APP_URL}types/fairy`,
+    normal: `${pokestoreApiUrl}types/normal`,
+    fighting: `${pokestoreApiUrl}types/fighting`,
+    flying: `${pokestoreApiUrl}types/flying`,
+    poison: `${pokestoreApiUrl}types/poison`,
+    ground: `${pokestoreApiUrl}types/ground`,
+    rock: `${pokestoreApiUrl}types/rock`,
+    bug: `${pokestoreApiUrl}types/bug`,
+    ghost: `${pokestoreApiUrl}types/ghost`,
+    steel: `${pokestoreApiUrl}types/steel`,
+    fire: `${pokestoreApiUrl}types/fire`,
+    water: `${pokestoreApiUrl}types/water`,
+    grass: `${pokestoreApiUrl}types/grass`,
+    electric: `${pokestoreApiUrl}types/electric`,
+    psychic: `${pokestoreApiUrl}types/psychic`,
+    ice: `${pokestoreApiUrl}types/ice`,
+    dragon: `${pokestoreApiUrl}types/dragon`,
+    dark: `${pokestoreApiUrl}types/dark`,
+    fairy: `${pokestoreApiUrl}types/fairy`,
   };
 
   const countRoutes = Object.keys(typeRoutes).length;
@@ -45,7 +46,7 @@ typesRouter.get("/:type", async (req, res) => {
 
   const findParams: any = { types: { $in: [currentType] } };
 
-  const url: string = `${process.env.APP_URL}types/${currentType}`;
+  const url: string = `${pokestoreApiUrl}types/${currentType}`;
 
   const order: any = req.query.order;
 
@@ -79,7 +80,7 @@ typesRouter.get("/:type/pokemon/:nameOrKey", async (req, res) => {
     ...findSecondParams,
   };
 
-  const url: string = `${process.env.APP_URL}types/${currentType}/pokemon/${currentNameOrKey}`;
+  const url: string = `${pokestoreApiUrl}types/${currentType}/pokemon/${currentNameOrKey}`;
 
   const order: any = req.query.order;
 
@@ -87,3 +88,4 @@ typesRouter.get("/:type/pokemon/:nameOrKey", async (req, res) => {
 });
 
 export default typesRouter;
+

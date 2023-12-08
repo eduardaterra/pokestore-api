@@ -1,16 +1,15 @@
 import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
-import pokemonRouter from "./routes/pokemon";
-import typesRouter from "./routes/types";
+import pokemonRouter from "./pokemon";
+import typesRouter from "./types";
 import cors from "cors";
+import { pokestoreApiUrl } from "../constants";
 
 dotenv.config();
 const app = express();
 app.use(express.json());
 app.use(cors());
-
-console.log(process.env.DATABASE_CONNECTION);
 
 mongoose.connect(
   process.env.DATABASE_CONNECTION as string,
@@ -24,8 +23,8 @@ mongoose.connect(
 
 app.get("/", async (req, res) => {
   res.send({
-    pokemon: `${process.env.APP_URL}pokemon`,
-    types: `${process.env.APP_URL}types`,
+    pokemon: `${pokestoreApiUrl}pokemon`,
+    types: `${pokestoreApiUrl}types`,
   });
 });
 
@@ -33,4 +32,5 @@ app.use("/pokemon", pokemonRouter);
 
 app.use("/types", typesRouter);
 
-app.listen(process.env.PORT || 3000);
+app.listen(process.env.PORT ?? 3000);
+

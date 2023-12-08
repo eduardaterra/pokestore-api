@@ -38,45 +38,33 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
+var _a;
 Object.defineProperty(exports, "__esModule", { value: true });
-var Pokemon_1 = __importDefault(require("../models/Pokemon"));
-var pagination = function (offset, limit, findParams, url, order) { return __awaiter(void 0, void 0, void 0, function () {
-    var orderApi, result, countAllPokemon, nextPage, previousPage;
+var express_1 = __importDefault(require("express"));
+var mongoose_1 = __importDefault(require("mongoose"));
+var dotenv_1 = __importDefault(require("dotenv"));
+var pokemon_1 = __importDefault(require("./pokemon"));
+var types_1 = __importDefault(require("./types"));
+var cors_1 = __importDefault(require("cors"));
+var constants_1 = require("../constants");
+dotenv_1.default.config();
+var app = (0, express_1.default)();
+app.use(express_1.default.json());
+app.use((0, cors_1.default)());
+mongoose_1.default.connect(process.env.DATABASE_CONNECTION, { useNewUrlParser: true }, function (err) {
+    if (err) {
+        console.log(err);
+    }
+});
+app.get("/", function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
     return __generator(this, function (_a) {
-        switch (_a.label) {
-            case 0:
-                orderApi = order === undefined ? "key" : order;
-                return [4 /*yield*/, Pokemon_1.default.find(findParams)
-                        .skip(offset)
-                        .limit(limit)
-                        .sort(orderApi)];
-            case 1:
-                result = _a.sent();
-                return [4 /*yield*/, Pokemon_1.default.find(findParams).count()];
-            case 2:
-                countAllPokemon = _a.sent();
-                nextPage = offset === countAllPokemon || offset + limit >= countAllPokemon
-                    ? null
-                    : "".concat(url, "?offset=").concat(offset + limit, "&limit=").concat(limit, "&order=").concat(orderApi);
-                previousPage = offset === 0 || offset - limit < 0
-                    ? null
-                    : "".concat(url, "?offset=").concat(offset - limit, "&limit=").concat(limit, "&order=").concat(orderApi);
-                return [2 /*return*/, orderApi === "key"
-                        ? {
-                            count: countAllPokemon,
-                            previous: previousPage,
-                            next: nextPage,
-                            orderByName: "".concat(url, "?offset=").concat(offset, "&limit=").concat(limit, "&order=name"),
-                            results: result,
-                        }
-                        : {
-                            count: countAllPokemon,
-                            previous: previousPage,
-                            next: nextPage,
-                            orderByKey: "".concat(url, "?offset=").concat(offset, "&limit=").concat(limit, "&order=key"),
-                            results: result,
-                        }];
-        }
+        res.send({
+            pokemon: "".concat(constants_1.pokestoreApiUrl, "pokemon"),
+            types: "".concat(constants_1.pokestoreApiUrl, "types"),
+        });
+        return [2 /*return*/];
     });
-}); };
-exports.default = pagination;
+}); });
+app.use("/pokemon", pokemon_1.default);
+app.use("/types", types_1.default);
+app.listen((_a = process.env.PORT) !== null && _a !== void 0 ? _a : 3000);
