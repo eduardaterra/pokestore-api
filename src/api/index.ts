@@ -1,10 +1,10 @@
 import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
-import pokemonRouter from "./routes/pokemon";
-import typesRouter from "./routes/types";
+import pokemonRouter from "./pokemon";
+import typesRouter from "./types";
 import cors from "cors";
-import { pokestoreApiUrl } from "./constants";
+import { pokestoreApiUrl } from "../constants";
 
 dotenv.config();
 const app = express();
