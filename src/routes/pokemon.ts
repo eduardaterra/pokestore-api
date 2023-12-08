@@ -1,6 +1,7 @@
 import express from "express";
 import pagination from "../services/pagination";
 import dotenv from "dotenv";
+import { pokestoreApiUrl } from "../constants";
 
 dotenv.config();
 
@@ -14,7 +15,7 @@ pokemonRouter.get("/", async (req, res) => {
     ? 20
     : Number(req.query.limit);
   const findParams: any = null;
-  const url: string = `${process.env.APP_URL}pokemon`;
+  const url: string = `${pokestoreApiUrl}pokemon`;
   const order: any = req.query.order;
 
   res.send(await pagination(offset, limit, findParams, url, order));
@@ -33,10 +34,11 @@ pokemonRouter.get("/:nameOrKey", async (req, res) => {
         name: { $regex: new RegExp(req.params.nameOrKey), $options: "i" },
       }
     : { key: req.params.nameOrKey };
-  const url: string = `${process.env.APP_URL}${req.params.nameOrKey}`;
+  const url: string = `${pokestoreApiUrl}${req.params.nameOrKey}`;
   const order: any = req.query.order;
 
   res.send(await pagination(offset, limit, findParams, url, order));
 });
 
 export default pokemonRouter;
+

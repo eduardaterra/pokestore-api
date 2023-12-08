@@ -14,7 +14,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     function verb(n) { return function (v) { return step([n, v]); }; }
     function step(op) {
         if (f) throw new TypeError("Generator is already executing.");
-        while (_) try {
+        while (g && (g = 0, op[0] && (_ = 0)), _) try {
             if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
             if (y = 0, t) op = [op[0] & 2, t.value];
             switch (op[0]) {
@@ -57,23 +57,23 @@ var pagination = function (offset, limit, findParams, url, order) { return __awa
                 countAllPokemon = _a.sent();
                 nextPage = offset === countAllPokemon || offset + limit >= countAllPokemon
                     ? null
-                    : url + "?offset=" + (offset + limit) + "&limit=" + limit + "&order=" + orderApi;
+                    : "".concat(url, "?offset=").concat(offset + limit, "&limit=").concat(limit, "&order=").concat(orderApi);
                 previousPage = offset === 0 || offset - limit < 0
                     ? null
-                    : url + "?offset=" + (offset - limit) + "&limit=" + limit + "&order=" + orderApi;
+                    : "".concat(url, "?offset=").concat(offset - limit, "&limit=").concat(limit, "&order=").concat(orderApi);
                 return [2 /*return*/, orderApi === "key"
                         ? {
                             count: countAllPokemon,
                             previous: previousPage,
                             next: nextPage,
-                            orderByName: url + "?offset=" + offset + "&limit=" + limit + "&order=name",
+                            orderByName: "".concat(url, "?offset=").concat(offset, "&limit=").concat(limit, "&order=name"),
                             results: result,
                         }
                         : {
                             count: countAllPokemon,
                             previous: previousPage,
                             next: nextPage,
-                            orderByKey: url + "?offset=" + offset + "&limit=" + limit + "&order=key",
+                            orderByKey: "".concat(url, "?offset=").concat(offset, "&limit=").concat(limit, "&order=key"),
                             results: result,
                         }];
         }

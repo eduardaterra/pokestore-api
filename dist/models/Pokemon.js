@@ -27,5 +27,5 @@ var PokemonSchema = new mongoose_1.Schema({
         type: String,
     },
 });
-var Pokemon = mongoose_1.model("Pokemon", PokemonSchema);
+var Pokemon = (0, mongoose_1.model)("Pokemon", PokemonSchema);
 exports.default = Pokemon;
