@@ -1,6 +1,7 @@
 import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
+import serverless from "serverless-http";
 import pokemonRouter from "./pokemon";
 import typesRouter from "./types";
 import cors from "cors";
@@ -33,4 +34,6 @@ app.use("/pokemon", pokemonRouter);
 app.use("/types", typesRouter);
 
 app.listen(process.env.PORT ?? 3000);
+
+export const handler = serverless(app);
 
