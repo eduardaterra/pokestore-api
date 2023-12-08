@@ -14,7 +14,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     function verb(n) { return function (v) { return step([n, v]); }; }
     function step(op) {
         if (f) throw new TypeError("Generator is already executing.");
-        while (_) try {
+        while (g && (g = 0, op[0] && (_ = 0)), _) try {
             if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
             if (y = 0, t) op = [op[0] & 2, t.value];
             switch (op[0]) {
@@ -42,6 +42,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var express_1 = __importDefault(require("express"));
 var pagination_1 = __importDefault(require("../services/pagination"));
 var dotenv_1 = __importDefault(require("dotenv"));
+var constants_1 = require("../constants");
 dotenv_1.default.config();
 var pokemonRouter = express_1.default.Router();
 pokemonRouter.get("/", function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
@@ -56,10 +57,10 @@ pokemonRouter.get("/", function (req, res) { return __awaiter(void 0, void 0, vo
                     ? 20
                     : Number(req.query.limit);
                 findParams = null;
-                url = process.env.APP_URL + "pokemon";
+                url = "".concat(constants_1.pokestoreApiUrl, "pokemon");
                 order = req.query.order;
                 _b = (_a = res).send;
-                return [4 /*yield*/, pagination_1.default(offset, limit, findParams, url, order)];
+                return [4 /*yield*/, (0, pagination_1.default)(offset, limit, findParams, url, order)];
             case 1:
                 _b.apply(_a, [_c.sent()]);
                 return [2 /*return*/];
@@ -82,10 +83,10 @@ pokemonRouter.get("/:nameOrKey", function (req, res) { return __awaiter(void 0, 
                         name: { $regex: new RegExp(req.params.nameOrKey), $options: "i" },
                     }
                     : { key: req.params.nameOrKey };
-                url = "" + process.env.APP_URL + req.params.nameOrKey;
+                url = "".concat(constants_1.pokestoreApiUrl).concat(req.params.nameOrKey);
                 order = req.query.order;
                 _b = (_a = res).send;
-                return [4 /*yield*/, pagination_1.default(offset, limit, findParams, url, order)];
+                return [4 /*yield*/, (0, pagination_1.default)(offset, limit, findParams, url, order)];
             case 1:
                 _b.apply(_a, [_c.sent()]);
                 return [2 /*return*/];

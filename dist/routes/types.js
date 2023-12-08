@@ -25,7 +25,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     function verb(n) { return function (v) { return step([n, v]); }; }
     function step(op) {
         if (f) throw new TypeError("Generator is already executing.");
-        while (_) try {
+        while (g && (g = 0, op[0] && (_ = 0)), _) try {
             if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
             if (y = 0, t) op = [op[0] & 2, t.value];
             switch (op[0]) {
@@ -53,30 +53,31 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var express_1 = __importDefault(require("express"));
 var pagination_1 = __importDefault(require("../services/pagination"));
 var dotenv_1 = __importDefault(require("dotenv"));
+var constants_1 = require("../constants");
 dotenv_1.default.config();
 var typesRouter = express_1.default.Router();
 typesRouter.get("/", function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
     var typeRoutes, countRoutes;
     return __generator(this, function (_a) {
         typeRoutes = {
-            normal: process.env.APP_URL + "types/normal",
-            fighting: process.env.APP_URL + "types/fighting",
-            flying: process.env.APP_URL + "types/flying",
-            poison: process.env.APP_URL + "types/poison",
-            ground: process.env.APP_URL + "types/ground",
-            rock: process.env.APP_URL + "types/rock",
-            bug: process.env.APP_URL + "types/bug",
-            ghost: process.env.APP_URL + "types/ghost",
-            steel: process.env.APP_URL + "types/steel",
-            fire: process.env.APP_URL + "types/fire",
-            water: process.env.APP_URL + "types/water",
-            grass: process.env.APP_URL + "types/grass",
-            electric: process.env.APP_URL + "types/electric",
-            psychic: process.env.APP_URL + "types/psychic",
-            ice: process.env.APP_URL + "types/ice",
-            dragon: process.env.APP_URL + "types/dragon",
-            dark: process.env.APP_URL + "types/dark",
-            fairy: process.env.APP_URL + "types/fairy",
+            normal: "".concat(constants_1.pokestoreApiUrl, "types/normal"),
+            fighting: "".concat(constants_1.pokestoreApiUrl, "types/fighting"),
+            flying: "".concat(constants_1.pokestoreApiUrl, "types/flying"),
+            poison: "".concat(constants_1.pokestoreApiUrl, "types/poison"),
+            ground: "".concat(constants_1.pokestoreApiUrl, "types/ground"),
+            rock: "".concat(constants_1.pokestoreApiUrl, "types/rock"),
+            bug: "".concat(constants_1.pokestoreApiUrl, "types/bug"),
+            ghost: "".concat(constants_1.pokestoreApiUrl, "types/ghost"),
+            steel: "".concat(constants_1.pokestoreApiUrl, "types/steel"),
+            fire: "".concat(constants_1.pokestoreApiUrl, "types/fire"),
+            water: "".concat(constants_1.pokestoreApiUrl, "types/water"),
+            grass: "".concat(constants_1.pokestoreApiUrl, "types/grass"),
+            electric: "".concat(constants_1.pokestoreApiUrl, "types/electric"),
+            psychic: "".concat(constants_1.pokestoreApiUrl, "types/psychic"),
+            ice: "".concat(constants_1.pokestoreApiUrl, "types/ice"),
+            dragon: "".concat(constants_1.pokestoreApiUrl, "types/dragon"),
+            dark: "".concat(constants_1.pokestoreApiUrl, "types/dark"),
+            fairy: "".concat(constants_1.pokestoreApiUrl, "types/fairy"),
         };
         countRoutes = Object.keys(typeRoutes).length;
         res.send({ count: countRoutes, routes: typeRoutes });
@@ -96,10 +97,10 @@ typesRouter.get("/:type", function (req, res) { return __awaiter(void 0, void 0,
                     : Number(req.query.limit);
                 currentType = req.params.type;
                 findParams = { types: { $in: [currentType] } };
-                url = process.env.APP_URL + "types/" + currentType;
+                url = "".concat(constants_1.pokestoreApiUrl, "types/").concat(currentType);
                 order = req.query.order;
                 _b = (_a = res).send;
-                return [4 /*yield*/, pagination_1.default(offset, limit, findParams, url, order)];
+                return [4 /*yield*/, (0, pagination_1.default)(offset, limit, findParams, url, order)];
             case 1:
                 _b.apply(_a, [_c.sent()]);
                 return [2 /*return*/];
@@ -127,10 +128,10 @@ typesRouter.get("/:type/pokemon/:nameOrKey", function (req, res) { return __awai
                         : { key: currentNameOrKey }
                     : null;
                 findParams = __assign({ types: { $in: [currentType] } }, findSecondParams);
-                url = process.env.APP_URL + "types/" + currentType + "/pokemon/" + currentNameOrKey;
+                url = "".concat(constants_1.pokestoreApiUrl, "types/").concat(currentType, "/pokemon/").concat(currentNameOrKey);
                 order = req.query.order;
                 _b = (_a = res).send;
-                return [4 /*yield*/, pagination_1.default(offset, limit, findParams, url, order)];
+                return [4 /*yield*/, (0, pagination_1.default)(offset, limit, findParams, url, order)];
             case 1:
                 _b.apply(_a, [_c.sent()]);
                 return [2 /*return*/];
