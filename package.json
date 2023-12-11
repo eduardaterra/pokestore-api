@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "tsc-watch --onSuccess 'node ./dist/index.js'",
-    "build": "tsc --build ./tsconfig.json"
+    "build": "tsc --build ./tsconfig.json",
+    "vercel-build": "echo vercel build starting"
   },
   "author": "Eduarda Terra",
   "license": "ISC",
